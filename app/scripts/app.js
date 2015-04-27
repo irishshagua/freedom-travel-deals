@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.browse', {
+  .state('app.contacts', {
     url: "/contact",
     views: {
       'menuContent': {
@@ -56,7 +56,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'DealCtrl'
       }
     }
+  })
+
+  .state('app.comment', {
+    url: "/comments/new-comment",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/new-comment.html",
+        controller: 'NewCommentCtrl'
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/deals');
 });

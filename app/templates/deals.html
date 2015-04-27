@@ -1,8 +1,13 @@
 <ion-view view-title="Deals of the Week">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="deal in deals" href="#/app/deals/{{deal.id}}">
+      <ion-item
+        class="item item-avatar"
+        ng-repeat="deal in deals" href="#/app/deals/{{deal.id}}">
+
+        <img src="images/ionic.png"/>
         {{deal.title}}
+        
       </ion-item>
     </ion-list>
   </ion-content>
