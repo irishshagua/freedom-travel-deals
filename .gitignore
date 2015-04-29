@@ -3,6 +3,7 @@ node_modules
 platforms
 plugins
 www
+resources
 .idea
 .temp
 .sass-cache
@@ -14,4 +15,3 @@ coverage
 *.DS_Store
 
 app/bower_components
-app/scripts/configuration.js

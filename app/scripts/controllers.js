@@ -1,14 +1,13 @@
-angular.module('starter.controllers', [])
+'use strict';
 
-.controller('AppCtrl', function($scope) {
+angular.module('FTDeals.controllers', ['FTDeals.services'])
+
+.controller('MenuCtrl', function($scope, CmsApi) {
+  $scope.numberOfDeals = CmsApi.getCachedCmsData().deals.length;
 })
 
-.controller('DealsCtrl', function($scope) {
-  $scope.deals = [
-    { title: 'Spain', id: 1 },
-    { title: 'Greece', id: 2 },
-    { title: 'France', id: 3 }
-  ];
+.controller('DealsCtrl', function($scope, CmsApi) {
+  $scope.deals = CmsApi.getCachedCmsData().deals;
 })
 
 .controller('DealCtrl', function($scope) {
