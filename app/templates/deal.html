@@ -4,17 +4,17 @@
 
       <div class="item item-avatar">
         <img src="images/ionic.png">
-        <h2>Spain Sun Holiday</h2>
-        <p>November 05, 1955</p>
+        <h2>{{deal.title}}</h2>
+        <p>{{deal.changed}}</p>
       </div>
 
       <div class="item item-body">
-        <img class="full-image" src="images/holiday-image.jpg">
+        <img class="full-image" src={{deal.imgUrl}}>
         <p>
-          This is where the deal details go. Some blurb from the ws call.
+          {{deal.body.value}}
         </p>
         <p>
-          <a href="#" class="subdued">5 Comments</a>
+          <a href="#" class="subdued">{{deal.comment_count}} Comments</a>
         </p>
       </div>
 
