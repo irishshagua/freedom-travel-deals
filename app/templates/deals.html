@@ -1,5 +1,9 @@
 <ion-view view-title="Deals of the Week">
   <ion-content>
+    <ion-refresher
+      pulling-text="Search for new deals..."
+      on-refresh="refreshDeals()">
+    </ion-refresher>
     <ion-list>
       <ion-item
         class="item item-avatar"

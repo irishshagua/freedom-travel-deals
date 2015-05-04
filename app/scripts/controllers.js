@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FTDeals.controllers', ['FTDeals.services'])
+angular.module('FTDeals.controllers', ['FTDeals.services', 'FTDeals.filters'])
 
 .controller('MenuCtrl', function($scope, $log, CmsApi) {
 
@@ -16,7 +16,12 @@ angular.module('FTDeals.controllers', ['FTDeals.services'])
   });
 })
 
-.controller('DealsCtrl', function($scope, CmsApi) {
+.controller('DealsCtrl', function($scope, $log, CmsApi) {
+  $scope.refreshDeals = function() {
+    $log.info('refreshing deals');
+    $scope.$broadcast('scroll.refreshComplete');
+  };
+
   CmsApi.getCachedCmsData()
   .then(function(data) {
     $scope.deals = data.list;
@@ -26,21 +31,23 @@ angular.module('FTDeals.controllers', ['FTDeals.services'])
   });
 })
 
-.controller('DealCtrl', function($scope, $location, $log, CmsApi) {
-  $log.info("Deal page: " + $location.path());
-  var dealId = $location.path().split('/').reverse()[0]
+.controller('DealCtrl', function($scope, $location, $log, $sce, CmsApi) {
+  $log.info('Deal page: ' + $location.path());
+  var dealId = $location.path().split('/').reverse()[0];
 
   CmsApi.getCachedCmsData()
   .then(function(data) {
     $scope.deal = data.list.filter(function(node) {
-      return node.nid == dealId;
+      return node.nid === dealId;
     })[0];
 
+    $log.info('HTML is: ' + $scope.deal.body.value);
+    $scope.dealHtmlContent = $scope.deal.body.value;
     $scope.deal.imgUrl = 'http://api.freedomtravel.ie/sites/default/files/field/image/Explosion.jpg';
   }, function(err) {
     $log.error('Couldnt get deal: ' + err);
   });
 })
 
-.controller('NewCommentCtrl', function($scope) {
+.controller('NewCommentCtrl', function() {
 });
