@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * Main application for Freedom Travel
+ * mobile application. The only thing that
+ * is happening in the file is assigning
+ * controllers to different routes
+ */
 angular.module('FTDeals', ['ionic', 'FTDeals.controllers'])
 
 .config(function($stateProvider, $urlRouterProvider) {

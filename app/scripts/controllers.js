@@ -18,7 +18,7 @@ angular.module('FTDeals.controllers', ['FTDeals.services', 'FTDeals.filters'])
 
 .controller('DealsCtrl', function($scope, $log, CmsApi) {
   $scope.refreshDeals = function() {
-    $log.info('refreshing deals');
+    $log.debug('Refresh deals requested');
     $scope.$broadcast('scroll.refreshComplete');
   };
 
@@ -41,7 +41,6 @@ angular.module('FTDeals.controllers', ['FTDeals.services', 'FTDeals.filters'])
       return node.nid === dealId;
     })[0];
 
-    $log.info('HTML is: ' + $scope.deal.body.value);
     $scope.dealHtmlContent = $scope.deal.body.value;
     $scope.deal.imgUrl = 'http://api.freedomtravel.ie/sites/default/files/field/image/Explosion.jpg';
   }, function(err) {
