@@ -6,7 +6,7 @@
  * is happening in the file is assigning
  * controllers to different routes
  */
-angular.module('FTDeals', ['ionic', 'FTDeals.controllers'])
+angular.module('FTDeals', ['ionic', 'FTDeals.controllers', 'FTDeals.filters'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
