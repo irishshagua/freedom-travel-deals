@@ -13,7 +13,14 @@ angular.module('FTDeals.controllers.deal', ['FTDeals.services'])
     })[0];
 
     $scope.dealHtmlContent = $scope.deal.body.value;
-    $scope.deal.imgUrl = 'http://api.freedomtravel.ie/sites/default/files/field/image/Explosion.jpg';
+
+    CmsApi.getImageUrlForFile($scope.deal.field_image.file.uri)
+    .then(function(imgSrc) {
+      $scope.deal.imgUrl = imgSrc;
+    }, function(err) {
+      $log.error('Couldnt get img src: ' + err);
+    });
+    
   }, function(err) {
     $log.error('Couldnt get deal: ' + err);
   });

@@ -34,4 +34,18 @@ angular.module('FTDeals.services', ['FTDeals.config'])
 
     return deferred.promise;
   };
+
+  this.getImageUrlForFile = function(fileUrl) {
+      var deferredImgSrc = $q.defer();
+
+      $http
+        .get(fileUrl + '.json')
+        .then(function(res) {
+          deferredImgSrc.resolve(res.data.url);
+        }, function(err) {
+          deferredImgSrc.reject(JSON.stringify(err));
+        });
+
+      return deferredImgSrc.promise;
+  };
 });
