@@ -20,8 +20,16 @@ angular.module('FTDeals.controllers.deal', ['FTDeals.services'])
     }, function(err) {
       $log.error('Couldnt get img src: ' + err);
     });
-    
+
   }, function(err) {
     $log.error('Couldnt get deal: ' + err);
   });
+
+  $scope.shareDeal = function(dealToShare) {
+    window.plugins.socialsharing.share(
+      'Freedom Travel Deals: ' + dealToShare.title,
+      null,
+      dealToShare.imgUrl,
+      dealToShare.url);
+  };
 });
